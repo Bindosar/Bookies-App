@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./bookstore.jpg";
+const style = {
+  text: { textAlign: "center" },
+  shopImage: {
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "50%",
+  },
+};
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 style={style.text}>Welcome to Bookeis</h1>
+      <hr />
+      <h3 style={style.text}>bookies is a kttkoot Bookstore.</h3>
+      <img src={logo} rel="logo" width="500px" style={style.shopImage} />
+      <br />
+      <br />
+      {/* <img src="./src/alghanim.png" /> */}
     </div>
   );
 }
