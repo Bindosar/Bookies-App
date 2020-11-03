@@ -5,7 +5,7 @@ const BookItem = (props) => {
     <BookWrapper>
       <img src={props.book.image} />
       <p>{props.book.name}</p>
-      <p>{props.book.price}</p>
+      <p className="book-price">{props.book.price}KD</p>
     </BookWrapper>
   );
 };

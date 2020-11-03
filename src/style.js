@@ -48,6 +48,13 @@ const BookWrapper = styled.div`
   img {
     width: 120px;
   }
+  p {
+    text-align: center;
+
+    &.book-price {
+      color: #255253;
+    }
+  }
 `;
 
 const GlobalStyle = createGlobalStyle`
