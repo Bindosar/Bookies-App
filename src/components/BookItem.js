@@ -1,12 +1,12 @@
 import React from "react";
-import style from "../style";
+import { BookWrapper } from "../style";
 const BookItem = (props) => {
   return (
-    <div style={style.books}>
+    <BookWrapper>
       <img src={props.book.image} />
       <p>{props.book.name}</p>
       <p>{props.book.price}</p>
-    </div>
+    </BookWrapper>
   );
 };
 export default BookItem;
