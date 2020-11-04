@@ -14,7 +14,7 @@ const style = {
     marginLeft: "100px",
     marginRight: "50px",
     marginTop: "100px",
-    mrginBottom: "50px",
+    marginBottom: "50px",
     width: "30%",
   },
 
@@ -22,9 +22,10 @@ const style = {
     display: "flex",
   },
 };
+
 const Title = styled.h1`
   text-align: center;
-  color: #13293d;
+  color: #9ceaef;
 `;
 
 const Discrption = styled.h3`
@@ -46,25 +47,43 @@ const BookWrapper = styled.div`
   margin: 20px;
 
   img {
-    width: 120px;
+    height: 200px;
   }
   p {
     text-align: center;
 
     &.book-price {
-      color: #255253;
+      color: red;
     }
   }
 `;
 
 const GlobalStyle = createGlobalStyle`
 body{
- color:#13293D;
- background-color:papayawhip
-
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.mainColor};
 }
 `;
-const ProductWrapper = styled.div``;
+
+const ThemeButton = styled.button`
+  font-size: 1em;
+  margin: 1.25em;
+  padding: 0.25em 1em;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.backgroundColor};
+`;
+
+const theme = {
+  light: {
+    mainColor: "white",
+    backgroundColor: "black",
+  },
+  dark: {
+    mainColor: "#272D2D",
+    backgroundColor: "white",
+  },
+};
 export {
   style,
   Title,
@@ -73,5 +92,6 @@ export {
   ShopImage,
   Discrption,
   BookWrapper,
-  ProductWrapper,
+  ThemeButton,
+  theme,
 };
