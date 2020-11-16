@@ -11,16 +11,28 @@ import {
 import React, { useState } from "react";
 import BookList from "./components/BookList";
 import styled, { ThemeProvider } from "styled-components";
-
+import BookDetail from "./components/BookDetail";
+import books from "./books";
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
+  const [book, setBook] = useState(null);
+  const [_books, setbooks] = useState(books);
+
+  const deleteBook = (bookId) => {
+    const updatedBooks = _books.filter((book) => book.id !== bookId);
+    setbooks(updatedBooks);
+  };
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
-    // if (theme === "light") {
-    //   setCurrentTheme("dark");
-    // } else {
-    //   setCurrentTheme("light");
-    // }
+  };
+  const setView = () => {
+    if (book)
+      return (
+        <BookDetail book={book} deleteBook={deleteBook} setBook={setBook} />
+      );
+    return (
+      <BookList books={_books} deleteBook={deleteBook} setBook={setBook} />
+    );
   };
   return (
     <ThemeProvider theme={theme[currentTheme]}>
@@ -32,7 +44,7 @@ function App() {
         <Discrption>bookies is a kttkoot Bookstore.</Discrption>
         <ShopImage src={logo} alt="logo" />
       </div>
-      <BookList />
+      {setView()}
     </ThemeProvider>
   );
 }

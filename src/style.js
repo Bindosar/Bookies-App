@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-const style = {
+export const style = {
   text: { textAlign: "center" },
   shopImage: {
     display: "block",
@@ -23,27 +23,27 @@ const style = {
   },
 };
 
-const Title = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   color: #9ceaef;
 `;
 
-const Discrption = styled.h3`
+export const Discrption = styled.h3`
   text-align: center;
 `;
-const ShopImage = styled.img`
+export const ShopImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 `;
 
-const ListWrapper = styled.div`
+export const ListWrapper = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
 `;
-const BookWrapper = styled.div`
+export const BookWrapper = styled.div`
   margin: 20px;
 
   img {
@@ -58,14 +58,14 @@ const BookWrapper = styled.div`
   }
 `;
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 body{
   color: ${(props) => props.theme.backgroundColor};
   background-color: ${(props) => props.theme.mainColor};
 }
 `;
 
-const ThemeButton = styled.button`
+export const ThemeButton = styled.button`
   font-size: 1em;
   margin: 1.25em;
   padding: 0.25em 1em;
@@ -74,24 +74,40 @@ const ThemeButton = styled.button`
   color: ${(props) => props.theme.backgroundColor};
 `;
 
-const theme = {
+export const theme = {
   light: {
     mainColor: "white",
     backgroundColor: "black",
+    red: "#ff3232",
   },
   dark: {
     mainColor: "#272D2D",
     backgroundColor: "white",
+    red: "#ff3232",
   },
 };
-export {
-  style,
-  Title,
-  GlobalStyle,
-  ListWrapper,
-  ShopImage,
-  Discrption,
-  BookWrapper,
-  ThemeButton,
-  theme,
-};
+export const SearchBarStyled = styled.input`
+  padding: 0.5rem;
+  margin: 1rem auto;
+  display: block;
+  width: 40%;
+`;
+export const DetailWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+  img {
+    width: 40%;
+    float: left;
+  }
+
+  p {
+    vertical-align: middle;
+  }
+`;
+
+export const DeleteMe = styled.p`
+  color: ${(props) => props.theme.red};
+`;
