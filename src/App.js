@@ -13,6 +13,9 @@ import BookList from "./components/BookList";
 import styled, { ThemeProvider } from "styled-components";
 import BookDetail from "./components/BookDetail";
 import books from "./books";
+import Home from "./components/Home";
+import { Switch, Route } from "react-router";
+import { Link } from "react-router-dom";
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [book, setBook] = useState(null);
@@ -25,26 +28,26 @@ function App() {
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
   };
-  const setView = () => {
-    if (book)
-      return (
-        <BookDetail book={book} deleteBook={deleteBook} setBook={setBook} />
-      );
-    return (
-      <BookList books={_books} deleteBook={deleteBook} setBook={setBook} />
-    );
-  };
+  <Route path="/books/:bookSlug">
+    <BookDetail books={_books} deleteBook={deleteBook} />
+  </Route>;
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <div>
         <GlobalStyle />
+        <Link to="/books" styles={{ margin: 10, float: "right" }}>
+          Books
+        </Link>
         <ThemeButton onClick={toggleTheme}>Toggle theme</ThemeButton>
-        <Title>Welcome to Bookeis</Title>
-        <hr />
-        <Discrption>bookies is a kttkoot Bookstore.</Discrption>
-        <ShopImage src={logo} alt="logo" />
+        <Switch>
+          <Route path="/books">
+            <BookList books={_books} deleteBook={deleteBook} />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
       </div>
-      {setView()}
     </ThemeProvider>
   );
 }
