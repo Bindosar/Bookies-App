@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { Link } from "react-router-dom";
 export const style = {
   text: { textAlign: "center" },
   shopImage: {
@@ -110,4 +111,24 @@ export const DetailWrapper = styled.div`
 
 export const DeleteMe = styled.p`
   color: ${(props) => props.theme.red};
+`;
+
+export const Logo2 = styled(Link)`
+  padding: 0.75em;
+
+  img {
+    width: 8rem;
+  }
+`;
+
+export const NavStyled = styled.nav`
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const ThemeButton2 = styled.button`
+  font-size: 1em;
+  padding: 0.25em 1em;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.backgroundColor};
 `;

@@ -7,6 +7,9 @@ import {
   Discrption,
   ShopImage,
   theme,
+  Logo2,
+  NavStyled,
+  ThemeButton2,
 } from "./style";
 import React, { useState } from "react";
 import BookList from "./components/BookList";
@@ -15,7 +18,8 @@ import BookDetail from "./components/BookDetail";
 import books from "./books";
 import Home from "./components/Home";
 import { Switch, Route } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import logo2 from "./img/navbarlogo2.png";
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [book, setBook] = useState(null);
@@ -35,10 +39,20 @@ function App() {
     <ThemeProvider theme={theme[currentTheme]}>
       <div>
         <GlobalStyle />
-        <Link to="/books" styles={{ margin: 10, float: "right" }}>
+        <NavStyled className="navbar navbar-expand-lg"></NavStyled>
+        <Logo2 className="navbar-brand" to="/">
+          <img src={logo2} width="100" />
+        </Logo2>
+        <NavLink
+          className="navbar-item"
+          to="/books"
+          styles={{ margin: 10, float: "right" }}
+        >
           Books
-        </Link>
-        <ThemeButton onClick={toggleTheme}>Toggle theme</ThemeButton>
+        </NavLink>
+        <ThemeButton2 className="nav-item" onClick={toggleTheme}>
+          Toggle theme
+        </ThemeButton2>
         <Switch>
           <Route path="/books">
             <BookList books={_books} deleteBook={deleteBook} />
