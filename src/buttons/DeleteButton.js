@@ -1,8 +1,9 @@
 import React from "react";
 import { DeleteMe } from "../style";
-function DeleteButton(props) {
+import bookStore from "../stores/BookStore";
+function DeleteButton() {
   const handleDelete = () => {
-    props.deleteBook(props.bookId);
+    bookStore.deleteBook(bookStore.bookId);
   };
   return <DeleteMe onClick={handleDelete}>Delete</DeleteMe>;
 }

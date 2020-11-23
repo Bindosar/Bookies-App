@@ -1,6 +1,7 @@
 import { useState } from "react";
 import books from "../books";
 import { BookWrapper, DeleteMe } from "../style";
+import UpdateButton from "../buttons/UpdateButton";
 import DeleteButton from "../buttons/DeleteButton";
 import { Link } from "react-router-dom";
 const BookItem = (props) => {
@@ -16,6 +17,7 @@ const BookItem = (props) => {
       </Link>
       <p className="book-name">{book.name}</p>
       <p className="book-price">{book.price} KWD</p>
+      <UpdateButton book={book} />
       <DeleteButton bookId={book.id} deleteBook={props.deleteBook} />
     </BookWrapper>
   );

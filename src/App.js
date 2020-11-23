@@ -20,11 +20,14 @@ import Home from "./components/Home";
 import { Switch, Route } from "react-router";
 import { Link, NavLink } from "react-router-dom";
 import logo2 from "./img/navbarlogo2.png";
+
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  const [book, setBook] = useState(null);
   const [_books, setbooks] = useState(books);
 
+  const createBook = (newBook) => {
+    setbooks([..._books, newBook]);
+  };
   const deleteBook = (bookId) => {
     const updatedBooks = _books.filter((book) => book.id !== bookId);
     setbooks(updatedBooks);
@@ -32,6 +35,7 @@ function App() {
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
   };
+
   <Route path="/books/:bookSlug">
     <BookDetail books={_books} deleteBook={deleteBook} />
   </Route>;
@@ -55,7 +59,11 @@ function App() {
         </ThemeButton2>
         <Switch>
           <Route path="/books">
-            <BookList books={_books} deleteBook={deleteBook} />
+            <BookList
+              books={_books}
+              createBook={createBook}
+              deleteBook={deleteBook}
+            />
           </Route>
           <Route exact path="/">
             <Home />

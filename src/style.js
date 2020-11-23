@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export const style = {
   text: { textAlign: "center" },
   shopImage: {
@@ -131,4 +131,28 @@ export const ThemeButton2 = styled.button`
   border-radius: 3px;
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const NavItem = styled(NavLink)`
+  padding: 0.25em 1em;
+  color: ___CSS_0___;
+  &.active {
+    color: ___CSS_1___;
+    background-color: fuchsia;
+  }
+`;
+
+export const CreateButtonStyled = styled.button`
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.mainColor};
+
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
+`;
+
+export const UpdateButtonStyled = styled.p`
+  /* color: ${(props) => props.theme.pink}; */
+  color: pink;
 `;

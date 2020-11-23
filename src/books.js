@@ -26,5 +26,14 @@ const books = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-bNFaFQMAA1qU5M4wLNADpsy3RCXt2IWRQg&usqp=CAU",
   },
+  {
+    id: "4",
+    name: "إلى الجيل الصاعد",
+    slug: "إلى-الجيل-الصاعد",
+    description: "احمد بن يوسف السيد",
+    price: 12,
+    image:
+      "https://www.nourbook.com/publice/covers_cache_webp/2/f/b/7/377743f627fb773cb1308dafe6cbc906.jpg.webp",
+  },
 ];
 export default books;

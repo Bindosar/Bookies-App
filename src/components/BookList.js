@@ -3,28 +3,30 @@ import { ListWrapper } from "../style";
 import BookItem from "./BookItem";
 import SearchBar from "./SearchBar";
 import AddButton from "../buttons/AddButton";
-const BookList = (props) => {
+import bookStore from "../stores/BookStore";
+import { observer } from "mobx-react";
+
+const BookList = () => {
   const [query, setQuery] = useState("");
 
-  const bookList = props.books
-
+  const bookList2 = bookStore.books
     .filter((book) => book.name.includes(query))
     .map((book) => (
       <BookItem
         book={book}
         key={book.id}
-        setBook={props.setBook}
-        deleteBook={props.deleteBook}
+        setBook={bookStore.books.setBook}
+        deleteBook={bookStore.books.deleteBook}
       />
     ));
   return (
     <>
       <div className="container">
         <SearchBar setQuery={setQuery} />
-        <ListWrapper className="row">{bookList}</ListWrapper>
+        <ListWrapper className="row">{bookList2}</ListWrapper>
       </div>
       <AddButton />
     </>
   );
 };
-export default BookList;
+export default observer(BookList);
