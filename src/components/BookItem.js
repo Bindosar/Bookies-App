@@ -1,12 +1,9 @@
-import { useState } from "react";
-import books from "../books";
-import { BookWrapper, DeleteMe } from "../style";
+import { BookWrapper } from "../style";
 import UpdateButton from "../buttons/UpdateButton";
 import DeleteButton from "../buttons/DeleteButton";
 import { Link } from "react-router-dom";
 const BookItem = (props) => {
   const { book } = props;
-  const bookId = book.id;
   return (
     <BookWrapper className="col-lg-3 col-md-4 col-sm-6">
       <Link

@@ -23,22 +23,11 @@ import logo2 from "./img/navbarlogo2.png";
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  const [_books, setbooks] = useState(books);
 
-  const createBook = (newBook) => {
-    setbooks([..._books, newBook]);
-  };
-  const deleteBook = (bookId) => {
-    const updatedBooks = _books.filter((book) => book.id !== bookId);
-    setbooks(updatedBooks);
-  };
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
   };
 
-  <Route path="/books/:bookSlug">
-    <BookDetail books={_books} deleteBook={deleteBook} />
-  </Route>;
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <div>
@@ -58,12 +47,11 @@ function App() {
           Toggle theme
         </ThemeButton2>
         <Switch>
+          <Route path="/books/:bookSlug">
+            <BookDetail />
+          </Route>
           <Route path="/books">
-            <BookList
-              books={_books}
-              createBook={createBook}
-              deleteBook={deleteBook}
-            />
+            <BookList />
           </Route>
           <Route exact path="/">
             <Home />
