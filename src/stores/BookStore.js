@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
-import axios from "axios";
+import instance from "./instance";
 class BookStore {
   books = [];
   constructor() {
@@ -13,33 +13,31 @@ class BookStore {
   }
   fetchBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/books");
+      const response = await instance.get("/books");
       this.books = response.data;
     } catch (error) {
-      console.log("error lien : 16");
+      console.log("error line : 16");
     }
   };
 
-  createBook = async (newBook) => {
+  createBook = async (newBook, maktaba) => {
     try {
-      const res = await axios.post("http://localhost:8000/books", newBook);
+      const res = await instance.post(`/${maktaba.id}/books`, formData);
+      cd;
       this.books.push(res.data);
     } catch (error) {}
   };
 
   deleteBook = async (bookId) => {
     try {
-      await axios.delete(`http://localhost:8000/books/${bookId}`);
+      await instance.delete(`/books/${bookId}`);
       this.books = this.books.filter((book) => book.id !== bookId);
     } catch (error) {}
   };
 
   updateBook = async (updatedBook) => {
     try {
-      await axios.put(
-        `http://localhost:8000/books/${updatedBook.id}`,
-        updatedBook
-      );
+      await instance.put(`/books/${updatedBook.id}`, updatedBook);
       const book = this.book.find((book) => book.id === updatedBook.id);
       for (const key in book) book[key] = updatedBook[key];
     } catch (error) {

@@ -20,6 +20,9 @@ import Home from "./components/Home";
 import { Switch, Route } from "react-router";
 import { Link, NavLink } from "react-router-dom";
 import logo2 from "./img/navbarlogo2.png";
+import MaktabaList from "./components/MaktabaList";
+import bookStore from "./stores/BookStore";
+import SignupButton from "./components/SignupButton";
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
@@ -36,6 +39,9 @@ function App() {
         <Logo2 className="navbar-brand" to="/">
           <img src={logo2} width="100" />
         </Logo2>
+        <NavLink className="nav-item" to="/maktabas">
+          Maktabas
+        </NavLink>
         <NavLink
           className="navbar-item"
           to="/books"
@@ -43,6 +49,7 @@ function App() {
         >
           Books
         </NavLink>
+        <SignupButton />
         <ThemeButton2 className="nav-item" onClick={toggleTheme}>
           Toggle theme
         </ThemeButton2>
@@ -50,8 +57,14 @@ function App() {
           <Route path="/books/:bookSlug">
             <BookDetail />
           </Route>
+          <Route path="/maktaba/:maktabaSlug">
+            <MaktabaDetail />
+          </Route>
+          <Route path="/maktabas">
+            <MaktabaList />
+          </Route>
           <Route path="/books">
-            <BookList />
+            <BookList books={bookStore.books} />
           </Route>
           <Route exact path="/">
             <Home />

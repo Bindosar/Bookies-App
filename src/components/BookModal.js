@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import bookStore from "../stores/BookStore";
 import { useState } from "react";
 import { CreateButtonStyled } from "../style";
-function BookModal({ isOpen, closeModal, oldBook }) {
+function BookModal({ maktaba, isOpen, closeModal, oldBook }) {
   const [book, setBook] = useState(
     oldBook ?? {
       name: "",
@@ -18,7 +18,7 @@ function BookModal({ isOpen, closeModal, oldBook }) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    bookStore[oldBook ? "updatedBook" : "createBook"](book);
+    bookStore[oldBook ? "updatedBook" : "createBook"](book, maktaba);
     closeModal();
   };
 
